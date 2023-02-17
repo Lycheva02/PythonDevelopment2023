@@ -8,7 +8,7 @@ parser = argparse.ArgumentParser(
     epilog='Конец help, дальше сами')
 
 parser.add_argument('message', type=str, help='text for cow')
-parser.add_argument('-e', type=str, default='oo', help='the first two characters of the string are used as eyes')
+parser.add_argument('-e', type=str, default='oo', help='symbols to use eyes')
 parser.add_argument('-f', type=argparse.FileType('r'), help='cowfile')
 parser.add_argument('-l', action='store_true', help='calls the cowlist')
 parser.add_argument('-n', action='store_true', help='not to wrap the message')
@@ -25,7 +25,7 @@ parser.add_argument('-y', action='store_true', help='young mode')
 
 args = parser.parse_args()
 if args.l:
-    print(cowsay.cowlist())
+    print(cowsay.list_cows())
 else:
     prst = '-'
     if args.b:
