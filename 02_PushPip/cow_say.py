@@ -11,7 +11,7 @@ parser.add_argument('message', type=str, help='text for cow')
 parser.add_argument('-e', type=str, default='oo', help='symbols to use eyes')
 parser.add_argument('-f', type=argparse.FileType('r'), help='cowfile')
 parser.add_argument('-l', action='store_true', help='calls the cowlist')
-parser.add_argument('-n', action='store_true', help='not to wrap the message')
+parser.add_argument('-n', action='store_false', help='not to wrap the message')
 parser.add_argument('-T', type=str, default='', help='specify a tongue')
 parser.add_argument('-W', type=int, default=40, help='the width of the text bubble')
 parser.add_argument('-b', action='store_true', help='borg mode')
@@ -27,7 +27,7 @@ args = parser.parse_args()
 if args.l:
     print(cowsay.list_cows())
 else:
-    prst = '-'
+    prst = ''
     if args.b:
         prst += 'b'
     if args.d:
@@ -46,4 +46,4 @@ else:
         prst += 'y'
     if prst == '-':
         prst += 'bggpstwy'
-    print(cowsay.cowsay(args.message, preset=prst, eyes=args.e, tongue=args.T, width=args.W, wrap_text=args.n, cowfile=args.f))
+    print(cowsay.cowsay(message=args.message, preset=prst, eyes=args.e, tongue=args.T, width=args.W, wrap_text=args.n, cowfile=args.f))
