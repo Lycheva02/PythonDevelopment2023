@@ -7,7 +7,7 @@ parser = argparse.ArgumentParser(
     description='Реализует работу исходной программы cowsay',
     epilog='Конец help, дальше сами')
 
-parser.add_argument('message', type=str, help='text for cow')
+parser.add_argument('message', type=str, nargs='?', default='',  help='text for cow')
 parser.add_argument('-e', type=str, default='oo', help='symbols to use eyes')
 parser.add_argument('-f', type=argparse.FileType('r'), help='cowfile')
 parser.add_argument('-l', action='store_true', help='calls the cowlist')
