@@ -4,7 +4,7 @@ import cowsay
 
 parser = argparse.ArgumentParser(
     prog='cowsay',
-    description='Реализует дополненную работу исходной программы cowsay',
+    description='Реализует работу исходной программы cowsay',
     epilog='Конец help, дальше сами')
 
 parser.add_argument('message', type=str, help='text for cow')
