@@ -14,15 +14,18 @@ def bullscows(guess, secret):
     return tuple(res)
 
 def ask(prompt, valid=None):
-    #res = input(prompt)
-    cow = random.choice(cowsay.list_cows())
-    print(cowsay.cowsay(prompt, cow=cow))
+    ##res = input(prompt)
+    #cow = random.choice(cowsay.list_cows())
+    #print(cowsay.cowsay(prompt, cow=cow))
+    file = '    __    __\n    ||    ||\n    ||    ||\n  ~~~~~~~~~~~~\n  |  <.>      |\n|*            |\n|             |__________________________      _*\n  | --<                                  |-----\n  |________                              |\n          |                              |\n          |                              |\n          |                              |\n          |                              |\n          --------------------------------\n              U  U               U  U\n'
+    print(cowsay.cowsay(prompt, cowfile=file))
     res = input()
     if valid:
         while res not in valid:
-            #res = input(prompt)
-            cow = random.choice(cowsay.list_cows())
-            print(cowsay.cowsay(prompt, cow=cow))
+            ##res = input(prompt)
+            #cow = random.choice(cowsay.list_cows())
+            #print(cowsay.cowsay(prompt, cow=cow))
+            print(cowsay.cowsay(prompt, cowfile=file))
             res = input()
     return(res)
 
