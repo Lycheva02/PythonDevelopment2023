@@ -4,7 +4,9 @@ def bullscows(guess, secret):
     res = [0, 0]
     for i in range(len(guess)):
         if guess[i] in secret:
-            if guess[i] == secret[i]:
+            if i >= len(secret):
+                res[1] += 1
+            elif guess[i] == secret[i]:
                 res[0] += 1
             else:
                 res[1] += 1
