@@ -1,4 +1,5 @@
 import random
+import cowsay
 
 def bullscows(guess, secret):
     res = [0, 0]
@@ -13,14 +14,21 @@ def bullscows(guess, secret):
     return tuple(res)
 
 def ask(prompt, valid=None):
-    res = input(prompt)
+    #res = input(prompt)
+    cow = random.choice(cowsay.list_cows())
+    print(cowsay.cowsay(prompt, cow=cow))
+    res = input()
     if valid:
         while res not in valid:
-            res = input(prompt)
+            #res = input(prompt)
+            cow = random.choice(cowsay.list_cows())
+            print(cowsay.cowsay(prompt, cow=cow))
+            res = input()
     return(res)
 
 def inform(format_string, bulls, cows):
-    print(format_string.format(bulls, cows))
+    cow = random.choice(cowsay.list_cows())
+    print(cowsay.cowsay(format_string.format(bulls, cows), cow=cow))
 
 def gameplay(ask, inform, words):
     num_prompts = 0
