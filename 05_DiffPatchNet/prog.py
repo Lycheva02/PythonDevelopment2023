@@ -13,10 +13,10 @@ async def chat(reader, writer):
         inpt = await reader.readline()
         inpt = inpt.decode().strip()
         if inpt == 'who':
-            writer.write((' '.join([i for i in clients]) + '\n').encode())
+            writer.write((cowsay.cowsay(' '.join([i for i in clients])) + '\n').encode())
             await writer.drain()
         if inpt == 'cows':
-            writer.write((' '.join(set(cowsay.list_cows()) - set([i for i in clients])) + '\n').encode())
+            writer.write((cowsay.cowsay(' '.join(set(cowsay.list_cows()) - set([i for i in clients]))) + '\n').encode())
             await writer.drain()
         if inpt == 'quit':
             f = True
@@ -37,15 +37,15 @@ async def chat(reader, writer):
                 com = shlex.split(q.result().decode())
                 match com:
                     case ['who']:
-                        await clients[me].put(' '.join([i for i in clients]))
+                        await clients[me].put(cowsay.cowsay(' '.join([i for i in clients])))
                     case ['cows']:
-                        await clients[me].put(' '.join(set(cowsay.list_cows()) - set([i for i in clients])))
+                        await clients[me].put(cowsay.cowsay(' '.join(set(cowsay.list_cows()) - set([i for i in clients]))))
                     case ['say', nm, *txt]:
-                        await clients[nm].put(' '.join(txt))
+                        await clients[nm].put(cowsay.cowsay(' '.join(txt), cow=me))
                     case ['yield', *txt]:
                         for i in clients.values():
                             if i is not clients[me]:
-                                await i.put(' '.join(txt))
+                                await i.put(cowsay.cowsay(' '.join(txt), cow=me))
                     case ['quit']:
                         f = True
             else:
